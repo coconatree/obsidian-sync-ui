@@ -1,0 +1,76 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@import "@fontsource-variable/source-sans-3";
+
+html {
+    font-family: 'Roboto', serif, system-ui;
+    background-color: oklch(0.21 0 0);
+    color: white
+}
+
+body {
+    box-sizing: border-box;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Manrope", sans-serif, system-ui;
+    font-weight: 700;
+}
+
+p,
+span,
+a {
+    letter-spacing: 0.050em;
+}
+
+.title-font {
+    font-family: "Manrope", sans-serif, system-ui;
+}
+
+.text-color {
+    @apply text-gray-300
+}
+
+/* custom underline class for exact text width */
+.animated-underline {
+    @apply relative inline-block hover:text-blue-300;
+
+    &::after {
+        @apply absolute left-0 bottom-0 h-0.5 bg-blue-300;
+        content: '';
+        width: 100%;
+        /* full width of text only */
+        transform: scaleX(0);
+        /* start hidden */
+        transform-origin: left;
+        /* grow from left to right */
+        transition: transform 0.3s ease-out;
+    }
+
+    &:hover::after {
+        transform: scaleX(1);
+        /* animate to full text width */
+    }
+}
+
+.sidebar {
+    transition: width 0.3s ease;
+}
+
+.sidebar::after {
+
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.sidebar.sidebar-open::after {
+    opacity: 0;
+}
