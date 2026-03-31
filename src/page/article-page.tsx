@@ -23,13 +23,13 @@ export const ArticlePage = () => {
     const articlePreview = findArticlePreview(slug)
 
     const TOC = (
-        <div>
-            <div>
+        <div className="flex flex-col gap-3">
+            <div className="title-font font-medium">
                 Table of Contents
             </div>
             <ol>
                 <ul>
-                    <a className="animated-underline text-sm text-color">
+                    <a className="animated-underline text-sm text-color cursor-pointer">
                         The Rush
                     </a>
                 </ul>
@@ -40,7 +40,7 @@ export const ArticlePage = () => {
     return (
         <PageTemplate childSection={TOC}>
             <div className="flex justify-center">
-                <article className="flex flex-col gap-8 max-w-166   ">
+                <article className="flex flex-col gap-8 max-w-166">
                     <div className="flex flex-col gap-4">
                         <div className="text-sm flex gap-2">
                             <a href="/" className="animated-underline text-color cursor-pointer">
@@ -51,7 +51,7 @@ export const ArticlePage = () => {
                                 Articles
                             </a>
                         </div>
-                        <h1 className="text-4xl">
+                        <h1 className="text-4xl flex-1">
                             {articlePreview.title}
                         </h1>
                         <div className="text-sm">
@@ -95,10 +95,10 @@ const Article01Content = () => {
                 Later at home, I opened my PC and saw:
             </p>
 
-            <pre><code>
+            <div><div>
                 Z-SCALER: … software has made a request to a URL …
                 forwarded to a known command and control IP of a group called …
-            </code></pre>
+            </div></div>
 
             <p>
                 Also known as Phantom Panda, Granite Typhoon (cool names!).
@@ -175,7 +175,7 @@ const Article01Content = () => {
                 I emailed my manager:
             </p>
 
-            <pre><code>
+            <div><div>
                 Hi Architect,
 
                 A couple days ago I got a command and control alert on my PC.
@@ -185,7 +185,7 @@ const Article01Content = () => {
 
                 Best,
                 Emre
-            </code></pre>
+            </div></div>
 
             <p>
                 He replied quickly: “Contact IT.”

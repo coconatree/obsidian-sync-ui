@@ -2,45 +2,46 @@ import type { FC } from "react"
 import { ARTICLE_PREVIEW_DATA_TABLE } from "../db"
 import { Link } from "react-router-dom"
 import { PageTemplate } from "../template/page"
-import { ItalicHighlightedText } from "../comp/text-comp"
+import { Heading1, ItalicHighlightedBoldText, Text } from "../comp/text-comp"
 
 export const ArticleCard: FC<{ articlePreview: ArticlePreview }> = ({ articlePreview }) => {
     return (
-        <Link to={`articles/${articlePreview.slug}`} className="overflow-hidden">
+        <Link to={`articles/${articlePreview.slug}`} className="flex flex-col gap-4">
             <img
                 src={articlePreview.coverImage}
                 alt={articlePreview.title}
-                className="w-full h-48 object-cover rounded-lg"
+                className="w-full h-50 object-cover rounded-lg"
             />
-            <div>
-                <h2 className="text-xl font-semibold">
-                    {articlePreview.title}
-                </h2>
-                <p className="text-md text-gray-600">
-                    {articlePreview.excerpt}
-                </p>
-            </div>
-            <div className="flex items-center space-x-2">
-                {["Blog", "Article"].map((item, index) => (
-                    <span
-                        key={`accres-blog-card-tag-key-${index}`}
-                        className="text-blue-400"
-                    >
-                        {item}
-                        {index === 0 ? "." : ""}
-                    </span>
-                ))}
+            <div className="flex flex-col gap-2">
+                <div>
+                    <h2 className="text-xl font-semibold">
+                        {articlePreview.title}
+                    </h2>
+                </div>
+                <div className="flex items-center space-x-2">
+                    {["Story", "Article"].map((item, index) => (
+                        <>
+                        <span
+                            key={`accres-blog-card-tag-key-${index}`}
+                            className="text-md text-blue-400"
+                        >
+                            {item}
+                        </span>
+                        {index === 0 ? <span className="text-md text-blue-400 h-full">-</span> : <></>}
+                        </>
+                    ))}
+                </div>
             </div>
         </Link>
     )
 }
 
-export const BlogList = () => {
+export const ArticleList = () => {
     return (
-        <div className="grid grid-cols-3 w-full gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full gap-6 mt-10">
             {ARTICLE_PREVIEW_DATA_TABLE.map((item, index) => (
-                <div className="span-1">
-                    <ArticleCard key={`accres-blog-card-key-${index}`} articlePreview={item} />
+                <div key={`accres-blog-card-key-${index}`} className="col-span-1">
+                    <ArticleCard articlePreview={item} />
                 </div>
             ))}
         </div>
@@ -50,11 +51,15 @@ export const BlogList = () => {
 export const HomePage = () => {
     return (
         <PageTemplate>
-            <div className="text-3xl tracking-wider line-clamp-6 max-w-180">
-                I'm Emre. I build and write about <ItalicHighlightedText>Software</ItalicHighlightedText> and <ItalicHighlightedText>Stuff.</ItalicHighlightedText> Because
-                working on with a computer can create <ItalicHighlightedText> Stories.</ItalicHighlightedText>
+            <div className="flex flex-col gap-6">
+                <Heading1>
+                    Welcome to my website!
+                </Heading1>
+                <Text>
+                    Hey, I'm Emre. I build and write about my <ItalicHighlightedBoldText>Stories</ItalicHighlightedBoldText>, <ItalicHighlightedBoldText>Projects.</ItalicHighlightedBoldText> and <ItalicHighlightedBoldText>Stuff.</ItalicHighlightedBoldText> Cause I like it!
+                </Text>
             </div>
-            <BlogList />
+            <ArticleList />
         </PageTemplate>
     )
 }
