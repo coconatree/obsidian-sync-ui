@@ -56,7 +56,7 @@ export const HomePage = () => {
                     Welcome to my website!
                 </Heading1>
                 <Text>
-                    Hey, I'm Emre. I build and write about my <ItalicHighlightedBoldText>Stories</ItalicHighlightedBoldText>, <ItalicHighlightedBoldText>Projects.</ItalicHighlightedBoldText> and <ItalicHighlightedBoldText>Stuff.</ItalicHighlightedBoldText> Cause I like it!
+                    Hey, I'm Emre. I build and write about my <ItalicHighlightedBoldText>Stories, Projects.</ItalicHighlightedBoldText> and <ItalicHighlightedBoldText>Stuff.</ItalicHighlightedBoldText> Cause I like it!
                 </Text>
             </div>
             <ArticleList />

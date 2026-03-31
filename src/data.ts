@@ -18,7 +18,7 @@ export const APPLICATION_DATA = {
     contact_email: "emre.caniklioglu.00@gmail.com",
     navbar_header: "What's this?",
     navbar_description: "This, is my corner of the internet where I share what I write, build and learn.",
-    navbar_title: "Obsidian Sync",
+    navbar_title: "ShardedSync.com",
     navbar_author: "mr.anderson"
 }
 

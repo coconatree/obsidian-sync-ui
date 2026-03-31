@@ -3,12 +3,11 @@ import { useState, type FC, useEffect } from "react"
 import { APPLICATION_DATA, NAVBAR_LINK_DATA_LIST } from "../data"
 import { SocialIconList } from "./social-list"
 import { Link } from "react-router-dom"
-import { FaChevronLeft } from "react-icons/fa6"
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa6"
 
-export const MobileNavbar: FC<MobileNavbarProps> = ({}) => {
+export const MobileNavbar: FC<MobileNavbarProps> = ({ }) => {
     const [isOpen, setIsOpen] = useState(false);
 
-    const navbarControls = useAnimation();
     const sidebarControls = useAnimation();
 
     /* 
@@ -48,26 +47,18 @@ export const MobileNavbar: FC<MobileNavbarProps> = ({}) => {
 
     const handleClick = async () => {
         if (!isOpen) {
-            await navbarControls.start({
-                y: "-100%",
-                transition: { type: "spring", stiffness: 190, damping: 30, duration: 0.05 },
-            })
             sidebarControls.set({ x: "-100%" })
             await sidebarControls.start({
                 x: "0%",
-                transition: { type: "spring", stiffness: 190, damping: 30, delay: 0.1, duration: 0.05 }
+                transition: { type: "spring", stiffness: 500, damping: 40, duration: 0.1 }
             })
-            setIsOpen(true);
+            setIsOpen(true)
         } else {
             await sidebarControls.start({
                 x: "-100%",
-                transition: { type: "spring", stiffness: 190, damping: 30, delay: 0.1, duration: 0.05 },
+                transition: { type: "spring", stiffness: 500, damping: 40, duration: 0.1 },
             })
-            setIsOpen(false);
-            await navbarControls.start({
-                y: 0,
-                transition: { type: "spring", stiffness: 190, damping: 30, duration: 0.05 },
-            })
+            setIsOpen(false)
         }
     }
 
@@ -98,30 +89,20 @@ export const MobileNavbar: FC<MobileNavbarProps> = ({}) => {
 
     return (
         <>
-            <motion.div
-                className="md:hidden w-full border-b border-(--border-color) p-6 fixed top-0 bg-dark z-20 h-[8%] flex items-center justify-between"
-                animate={navbarControls}
-                initial={{ y: 0 }}
-            >
-                <div className="text-xl title-font font-bold">
+            <div className="md:hidden w-full border-b border-(--border-color) p-6 fixed top-0 bg-dark z-20 h-[8%] flex items-center justify-between">
+                <div className="text-md title-font font-bold">
                     {APPLICATION_DATA.navbar_title}
                 </div>
-                <motion.div
-                    className="md:hidden flex"
-                    animate={{ rotate: isOpen ? 0 : 180 }}
-                    transition={{ type: "spring", stiffness: 100, damping: 20 }}
+                <span
+                    className="md:hidden flex cursor-pointer transform transition-transform duration-75"
+                    onClick={handleClick}
                 >
-                    <span
-                        className="cursor-pointer transform transition-transform duration-75"
-                        onClick={handleClick}
-                    >
-                        <FaChevronLeft />
-                    </span>
-                </motion.div>
-            </motion.div>
+                    <FaChevronRight />
+                </span>
+            </div>
             <AnimatePresence>
                 <motion.div
-                    className="fixed flex flex-col justify-between gap-6 bg-dark min-h-screen bottom-0 left-0 z-20 p-6 w-full"
+                    className="fixed flex flex-col justify-between gap-6 bg-dark min-h-full bottom-0 left-0 z-20 p-6 w-full"
                     initial={{ x: "-100%" }}
                     animate={sidebarControls}
                     exit={{ x: "-100%" }}

@@ -11,7 +11,7 @@ export const PageTemplate: React.FunctionComponent<PropsWithChildren<PageTemplat
             <div className="flex flex-col gap-12 w-full justify-center min-h-full items-center">
                 <MobileNavbar childSection={childSection}/>
                 <div className="flex justify-center items-start mt-[16vh] min-w-full min-h-full md:mt-0">
-                    <div className="p-4 md:px-12 md:py-20 gap-12 max-w-286">
+                    <div className="px-4 md:px-12 py-6 md:py-20 gap-12 max-w-286">
                         {children}
                     </div>
                 </div>
