@@ -1,9 +1,11 @@
 import type { PropsWithChildren } from "react"
 import { APPLICATION_DATA, NAVBAR_LINK_DATA_LIST } from "../data"
-import { Link } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 import { SocialIconList } from "./social-list"
 
 export const Sidebar: React.FunctionComponent<PropsWithChildren<SidebarProps>> = ({ childSection }) => {
+
+    const {pathname} = useLocation()
 
     const renderChildSection = () => {
         if (!childSection) {
@@ -22,7 +24,9 @@ export const Sidebar: React.FunctionComponent<PropsWithChildren<SidebarProps>> =
             <li key={`navbar-link-item-key-${index}`}>
                 <Link
                     to={item.path}
-                    className="animated-underline"
+                    target={item.target || undefined}
+                    rel="noopener noreferrer"
+                    className={pathname === item.path ? "text-blue-300 underline underline-offset-4" : "animated-underline"}
                 >
                     {item.name}
                 </Link>
@@ -37,7 +41,7 @@ export const Sidebar: React.FunctionComponent<PropsWithChildren<SidebarProps>> =
     }
 
     return (
-        <div className="hidden md:flex md:flex-row md:items-center md:sticky md:top-0 md:min-h-full md:h-screen md:w-[17%] ">
+        <div className="hidden lg:flex lg:flex-row lg:items-center lg:sticky lg:top-0 lg:min-h-full lg:h-screen lg:w-[17%] lg:bg-dark lg:z-20">
             <div className="h-full px-8 py-10 justify-between gap-10 ">
                 <div className="flex flex-col gap-4 justify-between h-full pb-10">
                     <div className="flex flex-col gap-10">
@@ -46,7 +50,7 @@ export const Sidebar: React.FunctionComponent<PropsWithChildren<SidebarProps>> =
                                 <Link to="/" className="text-xl title-font font-bold cursor-pointer">
                                     {APPLICATION_DATA.navbar_title}
                                 </Link>
-                                <span className="text-xs font-bold">
+                                <span className="text-xs">
                                     by @{APPLICATION_DATA.navbar_author}
                                 </span>
                             </div>

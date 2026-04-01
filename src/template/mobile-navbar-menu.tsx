@@ -2,13 +2,16 @@ import { AnimatePresence, motion, useAnimation } from "framer-motion"
 import { useState, type FC, useEffect } from "react"
 import { APPLICATION_DATA, NAVBAR_LINK_DATA_LIST } from "../data"
 import { SocialIconList } from "./social-list"
-import { Link } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa6"
 
 export const MobileNavbar: FC<MobileNavbarProps> = ({ }) => {
+    
     const [isOpen, setIsOpen] = useState(false);
 
     const sidebarControls = useAnimation();
+
+    const {pathname} = useLocation()
 
     /* 
     const renderChildSection = () => {
@@ -68,7 +71,9 @@ export const MobileNavbar: FC<MobileNavbarProps> = ({ }) => {
                 <Link
                     to={item.path}
                     key={`navbar-link-item-key-${index}`}
-                    className="animated-underline"
+                    target={item.target || undefined}
+                    rel="noopener noreferrer"
+                    className={pathname === item.path ? "text-blue-300 underline underline-offset-4" : "animated-underline"}
                     onClick={() => {
                         if (isOpen) {
                             handleClick()
@@ -89,12 +94,12 @@ export const MobileNavbar: FC<MobileNavbarProps> = ({ }) => {
 
     return (
         <>
-            <div className="md:hidden w-full border-b border-(--border-color) p-6 fixed top-0 bg-dark z-20 h-[8%] flex items-center justify-between">
+            <div className="lg:hidden w-full border-b border-(--border-color) p-6 fixed top-0 bg-dark z-20 h-[8%] flex items-center justify-between">
                 <div className="text-md title-font font-bold">
                     {APPLICATION_DATA.navbar_title}
                 </div>
                 <span
-                    className="md:hidden flex cursor-pointer transform transition-transform duration-75"
+                    className="flex cursor-pointer transform transition-transform duration-75"
                     onClick={handleClick}
                 >
                     <FaChevronRight />
@@ -107,45 +112,40 @@ export const MobileNavbar: FC<MobileNavbarProps> = ({ }) => {
                     animate={sidebarControls}
                     exit={{ x: "-100%" }}
                 >
-                    <div className="flex flex-col gap-6 ">
-                        <div className="flex flex-col gap-4 justify-between h-full pt-2">
-                            <div className="flex flex-col gap-10">
-                                <div className="flex flex-col w-full">
-                                    <div className="flex justify-between">
-                                        <div className="flex flex-col gap-2">
-                                            <Link to="/" className="text-xl title-font font-bold cursor-pointer">
-                                                {APPLICATION_DATA.navbar_title}
-                                            </Link>
-                                            <span className="text-xs font-bold">
-                                                by @{APPLICATION_DATA.navbar_author}
-                                            </span>
-                                        </div>
-                                        <span
-                                            onClick={handleClick}
-                                            className="cursor-pointer"
-                                        >
-                                            <FaChevronLeft />
+                    <div className="flex flex-col gap-6 justify-between h-full pt-2">
+                        <div className="flex flex-col gap-10">
+                            <div className="flex flex-col w-full">
+                                <div className="flex justify-between">
+                                    <div className="flex flex-col gap-2">
+                                        <Link to="/" className="text-xl title-font font-bold cursor-pointer">
+                                            {APPLICATION_DATA.navbar_title}
+                                        </Link>
+                                        <span className="text-xs">
+                                            by @{APPLICATION_DATA.navbar_author}
                                         </span>
                                     </div>
-                                    <hr className="mt-6 border-(--border-color)" />
+                                    <span
+                                        onClick={handleClick}
+                                        className="cursor-pointer mt-2"
+                                    >
+                                        <FaChevronLeft />
+                                    </span>
                                 </div>
-                                <div className="flex flex-col gap-4">
-                                    <div className="text-md title-font font-semibold">
-                                        {APPLICATION_DATA.navbar_header}
-                                    </div>
-                                    <p className="text-sm">
-                                        {APPLICATION_DATA.navbar_description}
-                                    </p>
-                                    <div className="mt-2">
-                                        <SocialIconList />
-                                    </div>
-                                </div>
-                                {renderNavbarLinkDataList()}
+                                <hr className="mt-6 border-(--border-color)" />
                             </div>
+                            <div className="flex flex-col gap-4">
+                                <div className="text-md title-font font-semibold">
+                                    {APPLICATION_DATA.navbar_header}
+                                </div>
+                                <p className="text-sm">
+                                    {APPLICATION_DATA.navbar_description}
+                                </p>
+                                <div className="mt-2">
+                                    <SocialIconList />
+                                </div>
+                            </div>
+                            {renderNavbarLinkDataList()}
                         </div>
-                    </div>
-                    <div className="text-xs pb-6">
-                        @Powered by React.js and AWS
                     </div>
                 </motion.div>
             </AnimatePresence>

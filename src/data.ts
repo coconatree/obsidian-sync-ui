@@ -1,5 +1,15 @@
+import { FaTelegramPlane } from "react-icons/fa"
 import { FaGithub, FaLinkedin  } from "react-icons/fa6"
 import { MdEmail } from "react-icons/md"
+
+export const APPLICATION_DATA = {
+    contact_email: "emre.caniklioglu.00@gmail.com",
+    telegram_username: "real_mr_anderson",
+    navbar_header: "What's this?",
+    navbar_description: "This, is my corner of the internet.",
+    navbar_title: "ShardedSync.com",
+    navbar_author: "mr.anderson"
+}
 
 export const NAVBAR_LINK_DATA_LIST = [
     {
@@ -11,16 +21,14 @@ export const NAVBAR_LINK_DATA_LIST = [
         id: 2,
         name: "articles & my work",
         path: "/articles"
+    },
+    {
+        id: 3,
+        name: "report a bug/typo",
+        path: `https://t.me/${APPLICATION_DATA.telegram_username}?text=I found a bug:`,
+        target: "_blank"
     }
 ]
-
-export const APPLICATION_DATA = {
-    contact_email: "emre.caniklioglu.00@gmail.com",
-    navbar_header: "What's this?",
-    navbar_description: "This, is my corner of the internet where I share what I write, build and learn.",
-    navbar_title: "ShardedSync.com",
-    navbar_author: "mr.anderson"
-}
 
 export const SOCIAL_ICON_LIST_DATA: IconListItem[] = [
     {
@@ -29,14 +37,19 @@ export const SOCIAL_ICON_LIST_DATA: IconListItem[] = [
         icon: FaLinkedin,
     },
     {
-        id: 3,
+        id: 2,
         href: "https://github.com/coconatree",
         icon: FaGithub
     },
     {
-        id: 4,
+        id: 3,
         href: `mailto:${APPLICATION_DATA.contact_email}`,
         icon: MdEmail,
+    },
+    {
+        id: 4,
+        href: `https://t.me/${APPLICATION_DATA.telegram_username}`,
+        icon: FaTelegramPlane
     }
 ]
 

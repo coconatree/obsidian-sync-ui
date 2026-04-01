@@ -2,7 +2,7 @@ import type { FC } from "react"
 import { ARTICLE_PREVIEW_DATA_TABLE } from "../db"
 import { Link } from "react-router-dom"
 import { PageTemplate } from "../template/page"
-import { Heading1, ItalicHighlightedBoldText, Text } from "../comp/text-comp"
+import { Heading1, Text } from "../comp/text-comp"
 
 export const ArticleCard: FC<{ articlePreview: ArticlePreview }> = ({ articlePreview }) => {
     return (
@@ -21,13 +21,13 @@ export const ArticleCard: FC<{ articlePreview: ArticlePreview }> = ({ articlePre
                 <div className="flex items-center space-x-2">
                     {["Story", "Article"].map((item, index) => (
                         <>
-                        <span
-                            key={`accres-blog-card-tag-key-${index}`}
-                            className="text-md text-blue-400"
-                        >
-                            {item}
-                        </span>
-                        {index === 0 ? <span className="text-md text-blue-400 h-full">-</span> : <></>}
+                            <span
+                                key={`accres-blog-card-tag-key-${index}`}
+                                className="text-md text-blue-300"
+                            >
+                                {item}
+                            </span>
+                            {index === 0 ? <span className="text-md text-blue-300 h-full">-</span> : <></>}
                         </>
                     ))}
                 </div>
@@ -56,7 +56,7 @@ export const HomePage = () => {
                     Welcome to my website!
                 </Heading1>
                 <Text>
-                    Hey, I'm Emre. I build and write about my <ItalicHighlightedBoldText>Stories, Projects.</ItalicHighlightedBoldText> and <ItalicHighlightedBoldText>Stuff.</ItalicHighlightedBoldText> Cause I like it!
+                    Hey, I'm Emre. I write about my <span className="text-blue-300 font-semibold">Stories, Projects</span> and <span className="text-blue-300 font-semibold">Stuff...</span> Cause I like it!
                 </Text>
             </div>
             <ArticleList />

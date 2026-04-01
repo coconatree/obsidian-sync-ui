@@ -17,10 +17,18 @@ export const Heading2: FC<PropsWithChildren<React.ComponentProps<"h1">>> = ({ ch
     )
 }
 
+export const Heading3: FC<PropsWithChildren<React.ComponentProps<"h1">>> = ({ children, className, ...props }) => {
+    return (
+        <h3 className={`text-xl md:text-xl ${className ? className : ""}`} {...props}>
+            {children}
+        </h3>
+    )
+}
+
 export const Text: FC<PropsWithChildren<React.ComponentProps<"p">>> = ({ children, className, ...props }) => {
     return (
         <p
-            className={`text-md text-color font-medium tracking-wider leading-relaxed ${className ? className : ""}`}
+            className={`text-md text-color font-normal tracking-wider leading-8 ${className ? className : ""}`}
             {...props}
         >
             {children}
@@ -36,12 +44,13 @@ export const ItalicHighlightedBoldText: FC<PropsWithChildren<React.ComponentProp
     )
 }
 
-export const ExternalLink: FC<React.ComponentProps<"a">> = ({children, href, className, target, ...props }) => {
+export const ExternalLink: FC<React.ComponentProps<"a">> = ({ children, href, className, target, ...props }) => {
     return (
-        <a 
-            className={`underline decoration-dotted decoration-blue-300 text-blue-300 underline-offset-4 ${className ? className : ""}`} 
+        <a
+            className={`underline decoration-dotted decoration-blue-300 text-blue-300 underline-offset-4 ${className ? className : ""}`}
             href={href}
-            target={target ? target : "_blank" }
+            target={target ? target : "_blank"}
+            rel="noopener noreferrer"
             {...props}
         >
             {children}
