@@ -1,5 +1,5 @@
 import { FaTelegramPlane } from "react-icons/fa"
-import { FaGithub, FaLinkedin  } from "react-icons/fa6"
+import { FaGithub, FaLinkedin, FaRss  } from "react-icons/fa6"
 import { MdEmail } from "react-icons/md"
 
 export const APPLICATION_DATA = {
@@ -33,32 +33,32 @@ export const NAVBAR_LINK_DATA_LIST = [
 export const SOCIAL_ICON_LIST_DATA: IconListItem[] = [
     {
         id: 1,
+        href: "/rss.xml",
+        icon: FaRss
+    },
+    {
+        id: 2,
         href: "https://www.linkedin.com/in/emre-c-709433170/",
         icon: FaLinkedin,
     },
     {
-        id: 2,
+        id: 3,
         href: "https://github.com/coconatree",
         icon: FaGithub
     },
     {
-        id: 3,
+        id: 4,
         href: `mailto:${APPLICATION_DATA.contact_email}`,
         icon: MdEmail,
     },
     {
-        id: 4,
+        id: 5,
         href: `https://t.me/${APPLICATION_DATA.telegram_username}`,
         icon: FaTelegramPlane
     }
 ]
 
 /*
-{
-    id: 2,
-    href: "/rss.xml",
-    icon: FaRss
-},
 {
     id: 5,
     href: "https://x.com/realemrebey",

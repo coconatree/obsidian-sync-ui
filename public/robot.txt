@@ -1,0 +1,6 @@
+# Default robots.txt
+User-agent: *
+Disallow:
+
+# Sitemap location
+Sitemap: https://www.shardedsync.com/sitemap.xml

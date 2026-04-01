@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+  <channel>
+    <title>Sharded Sync</title>
+    <link>https://www.shardedsync.com/</link>
+    <description>My real estate on the internet.</description>
+    <language>en-us</language>
+
+    <item>
+      <title>About Me</title>
+      <link>https://www.shardedsync.com/about-me</link>
+      <description>A story of how ended up here.</description>
+      <pubDate>Mon, 01 Apr 2026 12:00:00 +0000</pubDate>
+      <guid>https://www.shardedsync.com/about-me</guid>
+    </item>
+
+    <item>
+      <title>The Time I got Attacked by the Chinese Post</title>
+      <link>https://shardedsync.com/articles/the-time-I-got-attacked-by-the-chinese</link>
+      <description>The story of how I almost created a hufge security breach and gave access to a Chinese haceker group.</description>
+      <pubDate>Tue, 02 Apr 2026 15:00:00 +0000</pubDate>
+      <guid>https://shardedsync.com/articles/the-time-I-got-attacked-by-the-chinese</guid>
+    </item>
+  </channel>
+</rss>
